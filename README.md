@@ -13,7 +13,7 @@ Link: http://localhost:8081
 
 Nome base de dados: sessao_pauta
 
-**OBS**É necessário criar o banco de dados antes de rodar a API, a criação das tabelas e seus campos será feita de forma automatica pelo Spring Data.
+**OBS**: É necessário criar o banco de dados antes de rodar a API, a criação das tabelas e seus campos será feita de forma automatica pelo Spring Data.
 
 # Endpoints:
 **//POST**
