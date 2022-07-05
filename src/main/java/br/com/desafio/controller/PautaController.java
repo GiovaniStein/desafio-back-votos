@@ -38,12 +38,12 @@ public class PautaController {
     }
 
 	@PostMapping
-	public ResponseEntity<Pauta> save(@RequestBody @Valid PautaDTO pauta) {
+	public ResponseEntity<?> save(@RequestBody @Valid PautaDTO pauta) {
 		try {
 			Pauta insert = service.save(pauta);
 			return ResponseEntity.status(HttpStatus.CREATED).body(insert);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
 	}
 

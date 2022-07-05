@@ -46,12 +46,12 @@ public class SessaoController {
     }
 
 	@PostMapping
-	public ResponseEntity<Sessao> save(@RequestBody @Valid SessaoDTO dto) {
+	public ResponseEntity<?> save(@RequestBody @Valid SessaoDTO dto) {
 		try {
 			Sessao save = service.save(dto);
 			return ResponseEntity.status(HttpStatus.CREATED).body(save);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
 	}
 

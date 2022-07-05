@@ -35,28 +35,10 @@ public class SessaoService {
 	public Sessao findById(Long id) {
 		return repository.findById(id).orElse(null);
 	}
-	
-	public SessaoResultDTO findSessaoResults(Long id) {
 
-		List<Voto> votos = votoRepository.findBySessaoId(id);
-		
-		if(!votos.isEmpty()) {
-			SessaoResultDTO result = new SessaoResultDTO();
-			
-			Sessao sessao = repository.findById(id).orElse(null);
-			
-			Pauta pauta = pautaRepository.findById(sessao.getPauta().getId()).orElse(null);
-			
-			result.setNamePauta(pauta.getName());
-			result.setDescription(pauta.getDescription());
-			result.setNumberApprovedVotes(votos.stream().filter(p -> p.getValue() == VotoValue.SIM).count());
-			result.setNumberDisapprovedVotes(votos.stream().filter(p -> p.getValue() == VotoValue.NAO).count());
-			result.setNumberVotes(Long.valueOf(votos.size()));
-			
-			return result;
-		}
-		
-		return null;
+	public SessaoResultDTO findSessaoResults(Long id) {
+		SessaoResultDTO result = votoRepository.findResultadosSessao(id);
+		return result;
 	}
 
 	@Transactional
@@ -70,7 +52,8 @@ public class SessaoService {
 				sessao.setPauta(pauta);
 
 				sessao.setInit(LocalDateTime.now());
-				sessao.setClose(LocalDateTime.now().plusMinutes(dto.getDurationTime() != null ? dto.getDurationTime() : 1));
+				sessao.setClose(
+						LocalDateTime.now().plusMinutes(dto.getDurationTime() != null ? dto.getDurationTime() : 1));
 
 				return repository.save(sessao);
 			} else {

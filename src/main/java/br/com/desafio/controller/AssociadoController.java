@@ -38,12 +38,12 @@ public class AssociadoController {
     }
 
 	@PostMapping
-	public ResponseEntity<Associado> save(@RequestBody @Valid Associado associado) {
+	public ResponseEntity<?> save(@RequestBody @Valid Associado associado) {
 		try {
 			Associado save = service.save(associado);
 			return ResponseEntity.status(HttpStatus.CREATED).body(save);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 		}
 	}
 
