@@ -1,6 +1,9 @@
 # Tecnologias utilizadas
 * Java 11
 * Spring Boot (2.6.9)
+* Spring Data Jpa
+* Spring DevTools 
+* Spring Validation
 * Banco de dados Mysql
 * Lombok
 * Junit
@@ -9,6 +12,8 @@
 Link: http://localhost:8081
 
 Nome base de dados: sessao_pauta
+
+**OBS**É necessário criar o banco de dados antes de rodar a API, a criação das tabelas e seus campos será feita de forma automatica pelo Spring Data.
 
 # Endpoints:
 **//POST**
@@ -151,3 +156,13 @@ response:
     }
 ]
 ```
+# Tarefas bônus e observações:
+
+* Integração com sistemas externos: Foi utilizado para a integração com o serviço de validação de cpf, o RestTemplate do Spring Web Client devido a sua fácil implementação.
+
+* 
+
+* Versionamento: Utilizando o GitHub
+
+
+
