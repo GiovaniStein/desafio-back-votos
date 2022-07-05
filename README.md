@@ -7,6 +7,7 @@
 
 # Configurações
 Link: http://localhost:8081
+
 Nome base de dados: sessao_pauta
 
 # Endpoints:
@@ -60,10 +61,93 @@ body:
 **//GET**
 **Listar um associado** => /associado/{cpf}
 
+response:
+```json
+{
+    "cpf" : "11111111111",
+    "nome" : "Teste"
+}
+```
+
 **Listar uma pauta** => /pauta/{idPauta}
 
+response:
+```json
+{
+    "id": 15,
+    "name": "Pauta 1",
+    "description": "Teste Teste"
+}
+```
 **Listar uma sessão** => /sessao/{idSessao}
+
+response:
+```json
+{
+    "id": 12,
+    "init": "2022-07-04T17:32:55",
+    "close": "2022-07-04T17:52:55",
+    "pauta": {
+        "id": 15,
+        "name": "Pauta 1",
+        "description": "Teste Teste"
+    }
+}
+```
 
 **Listar resultado sessão** => /sessao/result/{idSessao}
 
+response:
+```json
+{
+    "namePauta": "Pauta 1",
+    "description": "Teste Teste",
+    "numberApprovedVotes": 4,
+    "numberDisapprovedVotes": 1,
+    "numberVotes": 5
+}
+```
+
 **Listar votos de uma sessão => /voto/{idSessao}
+
+response:
+```json
+[
+    {
+        "id": 9,
+        "associado": {
+            "cpf": "82591398046",
+            "nome": "Teste 1"
+        },
+        "sessao": {
+            "id": 13,
+            "init": "2022-07-04T18:16:17",
+            "close": "2022-07-04T18:36:17",
+            "pauta": {
+                "id": 15,
+                "name": "Pauta 1",
+                "description": "Teste Teste"
+            }
+        },
+        "value": "SIM"
+    },
+    {
+        "id": 10,
+        "associado": {
+            "cpf": "38123305044",
+            "nome": "Teste 2"
+        },
+        "sessao": {
+            "id": 13,
+            "init": "2022-07-04T18:16:17",
+            "close": "2022-07-04T18:36:17",
+            "pauta": {
+                "id": 15,
+                "name": "Pauta 1",
+                "description": "Teste Teste"
+            }
+        },
+        "value": "SIM"
+    }
+]
+```
