@@ -62,6 +62,8 @@ body:
 
 **Listar uma pauta** => /pauta/{idPauta}
 
-**Listar uma Sessão** => /sessao/{idSessao}
+**Listar uma sessão** => /sessao/{idSessao}
 
-**
+**Listar resultado sessão** => /sessao/result/{idSessao}
+
+**Listar votos de uma sessão => /voto/{idSessao}
