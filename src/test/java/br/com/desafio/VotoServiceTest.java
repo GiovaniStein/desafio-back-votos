@@ -16,9 +16,9 @@ import br.com.desafio.model.Sessao;
 import br.com.desafio.model.Voto;
 import br.com.desafio.model.dto.PautaDTO;
 import br.com.desafio.model.dto.SessaoDTO;
-import br.com.desafio.model.dto.SessaoResultDTO;
 import br.com.desafio.model.dto.VotoDTO;
 import br.com.desafio.model.enums.VotoValue;
+import br.com.desafio.model.projection.SessaoResultProjection;
 import br.com.desafio.service.AssociadoService;
 import br.com.desafio.service.PautaService;
 import br.com.desafio.service.SessaoService;
@@ -60,7 +60,7 @@ public class VotoServiceTest {
 		assertTrue(votos.size() == 1);
 
 		// Find results
-		SessaoResultDTO result = sessaoService.findSessaoResults(saveSessao.getId());
+		SessaoResultProjection result = sessaoService.findSessaoResults(saveSessao.getId());
 		assertNotEquals(null, result);
 		assertTrue(result.getNumberApprovedVotes().equals(Long.valueOf(1)));
 

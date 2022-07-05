@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import br.com.desafio.model.Voto;
-import br.com.desafio.model.dto.SessaoResultDTO;
+import br.com.desafio.model.projection.SessaoResultProjection;
 
 public interface VotoRepository extends JpaRepository<Voto, Long> {
 	
@@ -23,5 +23,5 @@ public interface VotoRepository extends JpaRepository<Voto, Long> {
 			+ ",    pauta p "
 			+ "WHERE p.id = s.pauta_id "
 			+ "AND   s.id = :idSessao ", nativeQuery = true)
-	SessaoResultDTO findResultadosSessao(Long idSessao);
+	SessaoResultProjection findResultadosSessao(Long idSessao);
 }

@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.desafio.model.Pauta;
 import br.com.desafio.model.Sessao;
-import br.com.desafio.model.Voto;
 import br.com.desafio.model.dto.SessaoDTO;
-import br.com.desafio.model.dto.SessaoResultDTO;
-import br.com.desafio.model.enums.VotoValue;
+import br.com.desafio.model.projection.SessaoResultProjection;
 import br.com.desafio.repository.PautaRepository;
 import br.com.desafio.repository.SessaoRepository;
 import br.com.desafio.repository.VotoRepository;
@@ -36,8 +34,8 @@ public class SessaoService {
 		return repository.findById(id).orElse(null);
 	}
 
-	public SessaoResultDTO findSessaoResults(Long id) {
-		SessaoResultDTO result = votoRepository.findResultadosSessao(id);
+	public SessaoResultProjection findSessaoResults(Long id) {
+		SessaoResultProjection result = votoRepository.findResultadosSessao(id);
 		return result;
 	}
 

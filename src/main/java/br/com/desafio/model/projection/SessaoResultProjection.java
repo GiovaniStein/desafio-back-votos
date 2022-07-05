@@ -1,6 +1,6 @@
-package br.com.desafio.model.dto;
+package br.com.desafio.model.projection;
 
-public interface SessaoResultDTO  {
+public interface SessaoResultProjection  {
 	
 	String getNamePauta();
 	String getDescription();

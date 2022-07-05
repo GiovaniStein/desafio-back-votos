@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.desafio.model.Sessao;
 import br.com.desafio.model.dto.SessaoDTO;
-import br.com.desafio.model.dto.SessaoResultDTO;
+import br.com.desafio.model.projection.SessaoResultProjection;
 import br.com.desafio.service.SessaoService;
 
 @RestController
@@ -34,8 +34,8 @@ public class SessaoController {
 	}
 	
 	@GetMapping("/result/{id}")
-	public ResponseEntity<SessaoResultDTO> findSessaoResult(@PathVariable Long id) {
-		SessaoResultDTO result = service.findSessaoResults(id);
+	public ResponseEntity<SessaoResultProjection> findSessaoResult(@PathVariable Long id) {
+		SessaoResultProjection result = service.findSessaoResults(id);
 		return result != null ? ResponseEntity.ok(result) : ResponseEntity.notFound().build();
 	}
 	
