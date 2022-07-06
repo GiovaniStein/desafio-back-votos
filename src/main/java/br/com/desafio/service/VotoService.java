@@ -42,23 +42,6 @@ public class VotoService {
 
 		try {
 
-			List<Voto> votosUsuario = repository.findBySessaoIdAndAssociadoCpf(dto.getIdSessao(), dto.getCpf());
-			
-			if(!votosUsuario.isEmpty())
-				throw new Exception("Usuário já possui Voto na sessão informada");
-			
-			Associado associado = associadoRepository.findById(dto.getCpf()).orElse(null);
-
-			if (associado == null)
-				throw new Exception("Associado informado não foi encontrato");
-
-			if (validateCpf) {
-				CpfValidatorResponseDTO verifyCpf = HttpClient.verifyCpf(dto.getCpf());
-
-				if (verifyCpf.getStatus() == StatusCpfValidator.UNABLE_TO_VOTE)
-					throw new Exception("O Cpf informado não está liberado para votar");
-			}
-
 			Sessao sessao = sessaoRepository.findById(dto.getIdSessao()).orElse(null);
 
 			if (sessao == null)
@@ -68,6 +51,23 @@ public class VotoService {
 
 			if (now.isAfter(sessao.getClose()))
 				throw new Exception("A sessão informada já foi finalizada");
+
+			Associado associado = associadoRepository.findById(dto.getCpf()).orElse(null);
+
+			if (associado == null)
+				throw new Exception("Associado informado não foi encontrato");
+
+			List<Voto> votosUsuario = repository.findBySessaoIdAndAssociadoCpf(dto.getIdSessao(), dto.getCpf());
+
+			if (!votosUsuario.isEmpty())
+				throw new Exception("Usuário já possui Voto na sessão informada");
+
+			if (validateCpf) {
+				CpfValidatorResponseDTO verifyCpf = HttpClient.verifyCpf(dto.getCpf());
+
+				if (verifyCpf.getStatus() == StatusCpfValidator.UNABLE_TO_VOTE)
+					throw new Exception("O Cpf informado não está liberado para votar");
+			}
 
 			Voto voto = new Voto();
 			voto.setAssociado(associado);
@@ -82,6 +82,7 @@ public class VotoService {
 
 	}
 
+	//Somente utilizado para testes
 	@Transactional
 	public void delete(Voto voto) {
 		repository.delete(voto);

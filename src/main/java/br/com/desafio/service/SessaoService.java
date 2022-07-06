@@ -35,6 +35,7 @@ public class SessaoService {
 	}
 
 	public SessaoResultProjection findSessaoResults(Long id) {
+		//Utilizado projeção para melhorar a performance
 		SessaoResultProjection result = votoRepository.findResultadosSessao(id);
 		return result;
 	}
@@ -63,6 +64,7 @@ public class SessaoService {
 
 	}
 
+	//Somente utilizado para testes
 	@Transactional
 	public void delete(Sessao sessao) {
 		repository.delete(sessao);

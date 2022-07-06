@@ -29,6 +29,7 @@ public class AssociadoService {
 		return repository.save(associado);
 	}
 
+	//Somente utilizado para testes
 	@Transactional
 	public void delete(Associado associado) {
 		repository.delete(associado);

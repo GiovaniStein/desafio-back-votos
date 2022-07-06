@@ -1,7 +1,5 @@
 package br.com.desafio.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +22,6 @@ public class PautaController {
 
 	@Autowired
 	private PautaService service;
-
-	@GetMapping
-	public ResponseEntity<List<Pauta>> getAll() {
-		List<Pauta> pautas = service.findAll();
-		return pautas.isEmpty() ? ResponseEntity.status(HttpStatus.NOT_FOUND).build() : ResponseEntity.ok(pautas);
-	}
 	
     @GetMapping("/{id}")
     private ResponseEntity<Pauta> findById(@PathVariable Long id) {

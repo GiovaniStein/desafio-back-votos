@@ -33,6 +33,7 @@ public class PautaService {
 		return repository.save(pauta);
 	}
 	
+	//Somente utilizado para testes
 	@Transactional
 	public void delete(Pauta pauta) {
 		repository.delete(pauta);

@@ -1,7 +1,5 @@
 package br.com.desafio.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +23,7 @@ public class SessaoController {
 	
 	@Autowired
 	private SessaoService service;
-	
-	@GetMapping
-	public ResponseEntity<List<Sessao>> getAll() {
-		List<Sessao> sessoes = service.findAll();
-		return sessoes.isEmpty() ? ResponseEntity.status(HttpStatus.NOT_FOUND).build()
-				: ResponseEntity.ok(sessoes);
-	}
-	
+		
 	@GetMapping("/result/{id}")
 	public ResponseEntity<SessaoResultProjection> findSessaoResult(@PathVariable Long id) {
 		SessaoResultProjection result = service.findSessaoResults(id);

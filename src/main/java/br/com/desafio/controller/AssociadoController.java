@@ -1,9 +1,6 @@
 package br.com.desafio.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +20,6 @@ public class AssociadoController {
 
 	@Autowired
 	private AssociadoService service;
-
-	@GetMapping
-	public ResponseEntity<List<Associado>> getAll() {
-		List<Associado> associados = service.findAll();
-		return associados.isEmpty() ? ResponseEntity.status(HttpStatus.NOT_FOUND).build()
-				: ResponseEntity.ok(associados);
-	}
 	
     @GetMapping("/{cpf}")
     private ResponseEntity<Associado> findById(@PathVariable String cpf) {
