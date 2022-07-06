@@ -65,6 +65,7 @@ body:
 **OBS2**: O campo cpf deve ser preenchido com um cpf de um associado cadastrado. 
 
 **//GET**
+
 **Listar um associado** => /associado/{cpf}
 
 response:
@@ -165,11 +166,5 @@ response:
 ![Capturar3](https://user-images.githubusercontent.com/24573999/177432197-bea658fc-60ef-436f-aaa4-fb0e2b470ee6.JPG)
 Para reailizar os teste foram usados 4 endpoints (2 do tipo GET e 2 do tipo POST) da API, onde foi disparado mais de 800 mil requisições. A aplicação conseguiu responder todas as requisições. 
 
-
 * Versionamento: Utilizando o GitHub
-
-
-
-
-
 
